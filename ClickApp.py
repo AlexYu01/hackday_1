@@ -59,7 +59,7 @@ class ClickAway(Screen):
         self.countDown.text = str(round(self.count.time_counter, 1))
         if float(self.countDown.text) < 1:
             self.manager.current = 'end'
-            temp = 'You click the button {} time'.format(self.addButton.text)
+            temp = 'You clicked the button {} time'.format(self.addButton.text)
             clicks = int(self.addButton.text)
             if clicks == 1:
                 self.manager.ids.end_screen.score.text = temp
