@@ -41,6 +41,7 @@
 
 <ClickAway>:
     addButton: addButton
+    countDown: countDown
 
     BoxLayout:
         orientation: "vertical"
@@ -50,6 +51,9 @@
         AddButton:
             id: addButton
             on_release: root.add_one()
+
+        CountDown:
+            id: countDown
 
 <AddButton>:
     text: "0"
@@ -65,4 +69,8 @@
 
 <HardButton>:
     text: "HARD"
+    font_size: 50
+
+<CountDown>:
+    text: str(round(self.time_counter, 1))
     font_size: 50
