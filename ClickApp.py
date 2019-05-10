@@ -57,6 +57,17 @@ class ClickAway(Screen):
 
     def update(self, *args):
         self.countDown.text = str(round(self.count.time_counter, 1))
+        if float(self.countDown.text) < 1:
+            self.manager.current = 'end'
+            temp = 'You click the button {} time'.format(self.addButton.text)
+            clicks = int(self.addButton.text)
+            if clicks == 1:
+                self.manager.ids.end_screen.score.text = temp
+            else:
+                self.manager.ids.end_screen.score.text = temp + 's'
+            temp = 'That\'s a savings of ${} or {}%'.format(str(clicks * .00000031 * 850000), str(clicks * .000031))
+
+            self.manager.ids.end_screen.savings.text = temp
 
     def add_one(self):
         value = int(self.addButton.text)
@@ -65,6 +76,10 @@ class ClickAway(Screen):
     def enable(self):
         self.addButton.disabled = False
 
+
+class End(Screen):
+
+    pass
 
 class Manager(ScreenManager):
 

@@ -3,6 +3,7 @@
 
     mode_screen: mode_screen
     click_away: click_away
+    end_screen: end_screen
 
     Mode:
         id: mode_screen
@@ -12,6 +13,11 @@
     ClickAway:
         id: click_away
         name: "clicker"
+        manager: screen_manager
+
+    End:
+        id: end_screen
+        name: "end"
         manager: screen_manager
 
 <Mode>:
@@ -43,33 +49,80 @@
     addButton: addButton
     countDown: countDown
 
-    BoxLayout:
-        orientation: "vertical"
-        spacing: 20
-        padding: 200
+    FloatLayout:
+
+        Image:
+            source: "./images/logo.PNG"
+            size_hint: 1, 1
+            pos_hint: {'center_x': .5, 'center_y': .8}
 
         AddButton:
             id: addButton
             on_release: root.add_one()
+            size_hint: .4, .2
+            pos_hint: {'center_x': .5, 'center_y': .5}
 
         CountDown:
             id: countDown
+            size_hint: .4, .2
+            pos_hint: {'center_x': .5, 'center_y': .2}
+
+<End>:
+    score: score
+    savings: savings
+
+    FloatLayout:
+
+        Image:
+            source: "./images/logo.PNG"
+            size_hint: 1, 1
+            pos_hint: {'center_x': .5, 'center_y': .7}
+
+        Label:
+            id: score
+            text: ""
+            font_size: 25
+            size_hint: .5, .5
+            pos_hint: {'center_x': .5, 'center_y': .5}
+
+        Label:
+            id: savings
+            text: ""
+            font_size: 25
+            size_hint: .5, .5
+            pos_hint: {'center_x': .5, 'center_y': .3}
 
 <AddButton>:
     text: "0"
-    font_size: 25
+    font_size: 50
 
 <EasyButton>:
-    text: "EASY"
-    font_size: 50
+    background_color: (1, 1, 1, 1)
+    background_normal: ''
+    Image:
+        source: "./images/jr_button.PNG"
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+        size: self.parent.size
 
 <NormalButton>:
-    text: "NORMAL"
-    font_size: 50
+    background_color: (1, 1, 1, 1)
+    background_normal: ''
+    Image:
+        source: "./images/mid_button.PNG"
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+        size: self.parent.size
+
 
 <HardButton>:
-    text: "HARD"
-    font_size: 50
+    background_color: (1, 1, 1, 1)
+    background_normal: ''
+    Image:
+        source: "./images/sr_button.PNG"
+        center_x: self.parent.center_x
+        center_y: self.parent.center_y
+        size: self.parent.size
 
 <CountDown>:
     text: str(round(self.time_counter, 1))
