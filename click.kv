@@ -1,0 +1,13 @@
+<Container>:
+    addButton: addButton
+    rows: 1
+    BoxLayout:
+        orientation: "vertical"
+        AddButton:
+            id: addButton
+            on_release: root.add_one()
+
+
+<AddButton>:
+    text: "0"
+    font_size: 50
