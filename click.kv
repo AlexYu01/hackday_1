@@ -1,0 +1,47 @@
+<Container>:
+    addButton: addButton
+
+    AddButton:
+        id: addButton
+        on_release: root.add_one()
+        center: self.parent.center
+
+    EasyButton:
+        id: easyButton
+        on_release: root.enable()
+        size: root.width * 0.25, root.height * 0.10
+        top: root.height * 0.90
+        center_x: root.width * .15
+
+    NormalButton:
+        id: normalButton
+        on_release: root.enable()
+        size: root.width * 0.25, root.height * 0.10
+        top: root.height * 0.75
+        center_x: root.width * .15
+
+    HardButton:
+        id: hardButton
+        on_release: root.enable()
+        size: root.width * 0.25, root.height * 0.10
+        top: root.height * 0.60
+        center_x: root.width * .15
+
+
+<AddButton>:
+    text: "0"
+    #size: 50, 50
+    font_size: 50
+
+
+<EasyButton>:
+    text: "Easy"
+    font_size: 50
+
+<NormalButton>:
+    text: "Normal"
+    font_size: 50
+
+<HardButton>:
+    text: "Hard"
+    font_size: 50
