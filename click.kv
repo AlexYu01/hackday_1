@@ -1,56 +1,74 @@
-<Container>:
+<Manager>:
+    id: screen_manager
+
+    mode_screen: mode_screen
+    click_away: click_away
+
+    Mode:
+        id: mode_screen
+        name: "mode_menu"
+        manager: screen_manager
+
+    ClickAway:
+        id: click_away
+        name: "clicker"
+        manager: screen_manager
+
+<Mode>:
+
+    FloatLayout:
+
+        EasyButton:
+            id: easyButton
+            size_hint: .4, .2
+            pos_hint: {'center_x': .5, 'center_y': .8}
+            on_release:
+                root.change_screen(100)
+
+        NormalButton:
+            id: normalButton
+            size_hint: .4, .2
+            pos_hint: {'center_x': .5, 'center_y': .5}
+            on_release:
+                root.change_screen(50)
+
+        HardButton:
+            id: hardButton
+            size_hint: .4, .2
+            pos_hint: {'center_x': .5, 'center_y': .2}
+            on_release:
+                root.change_screen(25)
+
+<ClickAway>:
     addButton: addButton
     countDown: countDown
 
-    AddButton:
-        id: addButton
-        on_release: root.add_one()
-        center: self.parent.center
+    BoxLayout:
+        orientation: "vertical"
+        spacing: 20
+        padding: 200
 
-    EasyButton:
-        id: easyButton
-        on_release: root.enable()
-        size: root.width * 0.25, root.height * 0.10
-        top: root.height * 0.90
-        center_x: root.width * .15
-
-    NormalButton:
-        id: normalButton
-        on_release: root.enable()
-        size: root.width * 0.25, root.height * 0.10
-        top: root.height * 0.75
-        center_x: root.width * .15
-
-    HardButton:
-        id: hardButton
-        on_release: root.enable()
-        size: root.width * 0.25, root.height * 0.10
-        top: root.height * 0.60
-        center_x: root.width * .15
-
+        AddButton:
+            id: addButton
+            on_release: root.add_one()
 
         CountDown:
             id: countDown
 
-
-
-
 <AddButton>:
     text: "0"
-    #size: 50, 50
-    font_size: 50
-
+    font_size: 25
 
 <EasyButton>:
-    text: "Easy"
+    text: "EASY"
     font_size: 50
 
 <NormalButton>:
-    text: "Normal"
+    text: "NORMAL"
     font_size: 50
 
 <HardButton>:
-    text: "Hard"
+    text: "HARD"
     font_size: 50
 
 <CountDown>:
